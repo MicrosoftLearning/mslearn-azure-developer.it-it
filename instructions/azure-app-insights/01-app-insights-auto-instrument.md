@@ -157,6 +157,7 @@ Esplorare altre opzioni di creazione di report per avere un'idea di quali altri 
 
 Dopo aver completato l'esercizio, è consigliabile eliminare le risorse cloud create per evitare un utilizzo non necessario delle risorse.
 
+1. Nel browser passare al portale di Azure [https://portal.azure.com](https://portal.azure.com). Accedere con le credenziali di Azure, se richiesto.
 1. Passare al gruppo di risorse creato e visualizzare il contenuto delle risorse usate in questo esercizio.
 1. Sulla barra degli strumenti selezionare **Elimina gruppo di risorse**.
 1. Immettere il nome del gruppo di risorse e confermarne l'eliminazione.

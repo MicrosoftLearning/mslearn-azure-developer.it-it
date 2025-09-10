@@ -289,9 +289,10 @@ Ora che le risorse necessarie sono state distribuite in Azure, il passaggio succ
 
 Dopo aver completato l'esercizio, è consigliabile eliminare le risorse cloud create per evitare un utilizzo non necessario delle risorse.
 
+1. Nel browser passare al portale di Azure [https://portal.azure.com](https://portal.azure.com). Accedere con le credenziali di Azure, se richiesto.
 1. Passare al gruppo di risorse creato e visualizzare il contenuto delle risorse usate in questo esercizio.
 1. Sulla barra degli strumenti selezionare **Elimina gruppo di risorse**.
 1. Immettere il nome del gruppo di risorse e confermarne l'eliminazione.
 
-> **ATTENZIONE:** Se si elimina un gruppo di risorse, vengono eliminate tutte le risorse contenute in esso. Se si sceglie un gruppo di risorse esistente per questo esercizio, tutte le risorse esistenti esterne all'ambito di questo 
+> **ATTENZIONE:** Se si elimina un gruppo di risorse, vengono eliminate tutte le risorse contenute in esso. Se si sceglie un gruppo di risorse esistente per questo esercizio, verranno eliminate anche tutte le risorse esistenti esterne all'ambito di questo esercizio.
 
