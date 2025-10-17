@@ -34,21 +34,22 @@ In questa sezione dell'esercizio si crea un gruppo di risorse e un account di Ar
     az group create --location eastus2 --name myResourceGroup
     ```
 
-1. Creare alcune variabili che verranno usate dai comandi dell'interfaccia della riga di comando, in modo da ridurre la quantità di digitazione. Sostituire **myLocation** con il valore scelto in precedenza. Il nome di Gestioni API deve essere un nome univoco globale e lo script seguente genera una stringa casuale. Sostituire **myEmail** con un indirizzo di posta elettronica a cui è possibile accedere.
+1. Creare alcune variabili che verranno usate dai comandi dell'interfaccia della riga di comando, in modo da ridurre la quantità di digitazione. Sostituire **<myLocation>** con il valore scelto in precedenza. Il nome di Gestioni API deve essere un nome univoco globale e lo script seguente genera una stringa casuale. Sostituire **<myEmail>** con un indirizzo di posta elettronica a cui è possibile accedere. Sostituire **<myResourceGroup>** con il valore scelto in precedenza.
 
     ```bash
     myApiName=import-apim-$RANDOM
-    myLocation=myLocation
-    myEmail=myEmail
+    myLocation=<myLocation>
+    myEmail=<myEmail>
+    myResourceGroup=<myResourceGroup>
     ```
 
-1. Creare un'istanza di Gestione API. Il comando **az apim create** viene usato per creare l'istanza. Sostituire **myResourceGroup** con il valore scelto in precedenza.
+1. Creare un'istanza di Gestione API. Il comando **az apim create** viene usato per creare l'istanza. 
 
     ```bash
     az apim create -n $myApiName \
         --location $myLocation \
         --publisher-email $myEmail  \
-        --resource-group myResourceGroup \
+        --resource-group $myResourceGroup \
         --publisher-name Import-API-Exercise \
         --sku-name Consumption 
     ```
@@ -73,24 +74,12 @@ Questa sezione illustra come importare e pubblicare un'API back-end Specifica Op
 
     Utilizzare i valori della tabella seguente per compilare il modulo. È possibile lasciare in tutti i campi non indicati il valore predefinito.
 
-    | Impostazione | Valore | Descrizione |
+    | Impostazione | valore | Descrizione |
     |--|--|--|
-    | **Specifica OpenAPI** | `https://bigconference.azurewebsites.net/` | Fa riferimento al servizio che implementa l'API, le richieste vengono inoltrate a questo indirizzo. La maggior parte delle informazioni necessarie nel modulo viene popolata automaticamente dopo l'immissione di questo valore. |
-    | **Schema URL** | selezionare **HTTPS**. | Definisce il livello di sicurezza del protocollo HTTP accettato dall'API. |
+    | **Specifica OpenAPI** | `https://petstore3.swagger.io/api/v3/openapi.json` | Fa riferimento al servizio che implementa l'API, le richieste vengono inoltrate a questo indirizzo. La maggior parte delle informazioni necessarie nel modulo viene popolata automaticamente dopo l'immissione di questo valore. |
+    | **Schema URL** | Assicurarsi che sia selezionato **HTTPS**. | Definisce il livello di sicurezza del protocollo HTTP accettato dall'API. |
 
 1. Selezionare **Crea**.
-
-## Configurare le impostazioni dell'API
-
-Viene creata la l'*API Big Conference*. A questo punto è possibile configurare le impostazioni dell'API. 
-
-1. Selezionare **Impostazioni** dal menu.
-
-1. Immettere `https://bigconference.azurewebsites.net/` nel campo **URL del servizio Web**.
-
-1. Deselezionare la casella di controllo **La sottoscrizione è obbligatoria**.
-
-1. Seleziona **Salva**.
 
 ## Testare l'API
 
@@ -98,11 +87,13 @@ Ora che l'API è stata importata e configurata è il momento di testarla.
 
 1. Selezionare **Test** nella barra dei menu. Verranno visualizzate tutte le operazioni disponibili nell'API.
 
-1. Cercare e selezionare l'operazione **Speakers_Get**. 
+1. Cercare e selezionare l'opzione **Find Pets by status**. operazione. 
 
 1. Selezionare **Invia**. Potrebbe essere necessario scorrere verso il basso nella pagina per visualizzare la risposta HTTP.
 
     Il back-end risponde con **200 OK** e alcuni dati.
+
+1. Per provare risultati diversi, è possibile selezionare uno **stato** diverso nella sezione **Parametri modello**. Selezionare l'elenco a discesa in **VALUE** e scegliere uno stato diverso. Selezionare quindi **Invia** per visualizzare i nuovi risultati.
 
 ## Pulire le risorse
 
