@@ -67,7 +67,7 @@ In questa sezione dell'esercizio si creano le risorse necessarie in Azure con l'
     ```
     az appconfig create --location $location \
         --name $appConfigName \
-        --resource-group $resourceGroup
+        --resource-group $resourceGroup \
         --sku Free
     ```
 
