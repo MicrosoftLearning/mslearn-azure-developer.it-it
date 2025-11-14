@@ -16,42 +16,42 @@ Attività eseguite in questo esercizio:
 * Verificare i risultati
 * Eseguire l'immagine su Registro dei Contenitori di Azure
 
-Questo esercizio richiede circa **20** minuti.
+Questo esercizio richiede circa**20** minuti.
 
 ## Creare una risorsa del Registro Azure Container
 
-1. Nel browser passare al portale di Azure [https://portal.azure.com](https://portal.azure.com). Accedere con le credenziali di Azure, se richiesto.
+1. Nel browser passare al portale di Azure[https://portal.azure.com](https://portal.azure.com). Accedere con le credenziali di Azure, se richiesto.
 
-1. Usare il pulsante **[\>_]** a destra della barra di ricerca, nella parte superiore della pagina, per aprire una nuova sessione di Cloud Shell nel portale di Azure selezionando un ambiente ***Bash***. Cloud Shell fornisce un'interfaccia della riga di comando in un riquadro nella parte inferiore del portale di Azure. Se viene richiesto di selezionare un account di archiviazione per salvare in modo permanente i file, selezionare **Nessun account di archiviazione richiesto**, selezionare la sottoscrizione e quindi **Applica**.
+1. Usare il pulsante **[\>_]** a destra della barra di ricerca, nella parte superiore della pagina, per aprire una nuova sessione di Cloud Shell nel portale di Azure selezionando un ambiente***Bash***. Cloud Shell fornisce un'interfaccia della riga di comando in un riquadro nella parte inferiore del portale di Azure. Se viene richiesto di selezionare un account di archiviazione per salvare in modo permanente i file, selezionare**Nessun account di archiviazione richiesto**, selezionare la sottoscrizione e quindi**Applica**.
 
-    > **Nota**: se in precedenza è stata creata una sessione Cloud Shell che usa un ambiente *PowerShell*, passare a ***Bash***.
+    > **Nota**: se in precedenza è stata creata una sessione Cloud Shell che usa un ambiente*PowerShell*, passare a***Bash***.
 
-1. Creare un gruppo di risorse con le risorse necessarie per questo esercizio. Sostituire **myResourceGroup** con un nome da usare per il gruppo di risorse. Se necessario, è possibile sostituire **eastus** con un'area nelle vicinanze. Se si ha già un gruppo di risorse da usare, procedere con il passaggio successivo.
+1. Creare un gruppo di risorse con le risorse necessarie per questo esercizio. Sostituire**myResourceGroup** con un nome da usare per il gruppo di risorse. Se necessario, è possibile sostituire**eastus** con un'area nelle vicinanze. Se si ha già un gruppo di risorse da usare, procedere con il passaggio successivo.
 
     ```
     az group create --location eastus --name myResourceGroup
     ```
 
-1. Eseguire il comando seguente per creare un registro contenitori di base. Il nome del registro deve essere univoco in Azure e contenere da 5 a 50 caratteri alfanumerici. Sostituire **myResourceGroup** con il nome usato in precedenza e **myContainerRegistry** con un valore univoco.
+1. Eseguire il comando seguente per creare un registro contenitori di base. Il nome del registro deve essere univoco in Azure e deve contenere da 5 a 50 caratteri numerici e minuscoli. Sostituire**myResourceGroup** con il nome usato in precedenza e**myContainerRegistry** con un valore univoco.
 
     ```bash
     az acr create --resource-group myResourceGroup \
         --name myContainerRegistry --sku Basic
     ```
 
-    > **Nota:** Il comando crea un registro *Basic*, ovvero un'opzione ottimizzata in termini di costo per sviluppatori che iniziano a usare Registro Azure Container.
+    > **Nota:** Il comando crea un registro*Basic*, ovvero un'opzione ottimizzata in termini di costo per sviluppatori che iniziano a usare Registro Azure Container.
 
 ## Compilare ed eseguire il push di un'immagine da un Dockerfile
 
 Successivamente, si compila e si esegue il push di un'immagine in base a un Dockerfile.
 
-1. Eseguire il comando seguente per creare il Dockerfile. Il Dockerfile contiene una singola riga che fa riferimento all'immagine *hello-world* ospitata in Microsoft Container Registry.
+1. Eseguire il comando seguente per creare il Dockerfile. Il Dockerfile contiene una singola riga che fa riferimento all'immagine*hello-world* ospitata in Microsoft Container Registry.
 
     ```bash
     echo FROM mcr.microsoft.com/hello-world > Dockerfile
     ```
 
-1. Eseguire il comando **az acr build** seguente, che consente di compilare l'immagine e, dopo la corretta compilazione, ne esegue il push nel registro. Sostituire **myContainerRegistry** con il nome creato in precedenza.
+1. Eseguire il comando**az acr build** seguente, che consente di compilare l'immagine e, dopo la corretta compilazione, ne esegue il push nel registro. Sostituire**myContainerRegistry** con il nome creato in precedenza.
 
     ```bash
     az acr build --image sample/hello-world:v1  \
@@ -59,7 +59,7 @@ Successivamente, si compila e si esegue il push di un'immagine in base a un Dock
         --file Dockerfile .
     ```
 
-    Di seguito è riportato un esempio abbreviato dell'output del comando precedente che mostra le ultime righe con i risultati finali. Come si può vedere, nel campo *repository* è elencata l'immagine *sample/hello-word*.
+    Di seguito è riportato un esempio abbreviato dell'output del comando precedente che mostra le ultime righe con i risultati finali. Come si può vedere, nel campo*repository* è elencata l'immagine*sample/hello-word*.
 
     ```
     - image:
@@ -80,7 +80,7 @@ Successivamente, si compila e si esegue il push di un'immagine in base a un Dock
 
 ## Verificare i risultati
 
-1. Eseguire il comando seguente per elencare i repository nel registro. Sostituire **myContainerRegistry** con il nome creato in precedenza.
+1. Eseguire il comando seguente per elencare i repository nel registro. Sostituire**myContainerRegistry** con il nome creato in precedenza.
 
     ```bash
     az acr repository list --name myContainerRegistry --output table
@@ -94,7 +94,7 @@ Successivamente, si compila e si esegue il push di un'immagine in base a un Dock
     sample/hello-world
     ```
 
-1. Eseguire il comando seguente per elencare i tag nel repository **sample/hello-world**. Sostituire **myContainerRegistry** con il nome usato in precedenza.
+1. Eseguire il comando seguente per elencare i tag nel repository**sample/hello-world**. Sostituire**myContainerRegistry** con il nome usato in precedenza.
 
     ```bash
     az acr repository show-tags --name myContainerRegistry \
@@ -111,14 +111,14 @@ Successivamente, si compila e si esegue il push di un'immagine in base a un Dock
 
 ## Eseguire l'immagine nel Registro Azure Container
 
-1. Eseguire l'immagine del contenitore *sample/hello-world:v1* dal registro contenitori con il comando **az acr run**. Nell'esempio seguente viene usato **$Registry** per specificare il registro in cui eseguire il comando. Sostituire **myContainerRegistry** con il nome usato in precedenza.
+1. Eseguire l'immagine del contenitore*sample/hello-world:v1* dal registro contenitori con il comando**az acr run**. Nell'esempio seguente viene usato **$Registry** per specificare il registro in cui eseguire il comando. Sostituire**myContainerRegistry** con il nome usato in precedenza.
 
     ```bash
     az acr run --registry myContainerRegistry \
         --cmd '$Registry/sample/hello-world:v1' /dev/null
     ```
 
-    Il parametro **cmd** di questo esempio esegue il contenitore nella configurazione predefinita, ma **cmd** supporta altri parametri **docker run** o anche altri comandi **docker**. 
+    Il parametro**cmd** di questo esempio esegue il contenitore nella configurazione predefinita, ma**cmd** supporta altri parametri**docker run** o anche altri comandi**docker**. 
 
     L'output di esempio seguente è abbreviato:
 
@@ -151,9 +151,9 @@ Successivamente, si compila e si esegue il push di un'immagine in base a un Dock
 
 Dopo aver completato l'esercizio, è consigliabile eliminare le risorse cloud create per evitare un utilizzo non necessario delle risorse.
 
-1. Nel browser passare al portale di Azure [https://portal.azure.com](https://portal.azure.com). Accedere con le credenziali di Azure, se richiesto.
+1. Nel browser passare al portale di Azure[https://portal.azure.com](https://portal.azure.com). Accedere con le credenziali di Azure, se richiesto.
 1. Passare al gruppo di risorse creato e visualizzare il contenuto delle risorse usate in questo esercizio.
-1. Sulla barra degli strumenti selezionare **Elimina gruppo di risorse**.
+1. Sulla barra degli strumenti selezionare**Elimina gruppo di risorse**.
 1. Immettere il nome del gruppo di risorse e confermarne l'eliminazione.
 
 > **ATTENZIONE:** Se si elimina un gruppo di risorse, vengono eliminate tutte le risorse contenute in esso. Se si sceglie un gruppo di risorse esistente per questo esercizio, verranno eliminate anche tutte le risorse esistenti esterne all'ambito di questo esercizio.
