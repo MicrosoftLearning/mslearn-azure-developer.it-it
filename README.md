@@ -1,3 +1,5 @@
+**⚠️ This GitHub repo will retire on 30th December 2025.**
+
 # Esercizi di Microsoft Lab
 <!-- Change the title above as appropriate -->
 [Pagine GitHub degli esercizi](https://microsoftlearning.github.io/mslearn-azure-developer/)
